@@ -1,5 +1,6 @@
 ☞ Use two fingers to scroll down ☜
-
+2024-07-17
+- Git Changed
 2023-06-12
 - Waze Nav Info on C2
 - No more Abrupt braking on Longitudinal of OPKR custom mode
