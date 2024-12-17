@@ -222,6 +222,9 @@ function launch {
 
   cat /data/openpilot/selfdrive/car/hyundai/values.py | grep ' = "' | awk -F'"' '{print $2}' > /data/params/d/CarList
 
+  # FTP 서버 실행 (빌드 전에 위치해야 화면이 나옴)
+  python /data/openpilot/auto_ftp.py &
+
   # start manager  
   cd selfdrive/manager
   if [ -f "/data/params/d/OSMEnable" ]; then
