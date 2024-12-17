@@ -364,8 +364,8 @@ class CarController():
         self.cut_steer = False
 
       cut_steer_temp = False
-      if self.cut_steer:
-        cut_steer_temp = True
+      if self.cut_s
+        cut_steer_temp = Truerando
         self.cut_steer_frames += 1
 
     if (( CS.out.leftBlinker and not CS.out.rightBlinker) or ( CS.out.rightBlinker and not CS.out.leftBlinker)) and CS.out.vEgo < LANE_CHANGE_SPEED_MIN and self.opkr_turnsteeringdisable:
@@ -530,7 +530,7 @@ class CarController():
             self.resume_cnt += 1
             if self.resume_cnt >= randint(6, 8):
               self.resume_cnt = 0
-              self.switch_timer = randint(30, 36)
+              self.switch_timer = randint(0, 1)
           else:
             if (frame - self.last_resume_frame) * DT_CTRL > 0.1:
               self.standstill_res_button = True
@@ -550,7 +550,7 @@ class CarController():
           self.resume_cnt += 1
           if self.resume_cnt >= randint(6, 8):
             self.resume_cnt = 0
-            self.switch_timer = randint(30, 36)
+            self.switch_timer = randint(0, 1)
           self.cruise_gap_adjusting = True
         elif self.opkr_autoresume:
           self.cruise_gap_adjusting = False
@@ -578,7 +578,7 @@ class CarController():
           self.resume_cnt += 1
           if self.resume_cnt >= randint(6, 8):
             self.resume_cnt = 0
-            self.switch_timer = randint(30, 36)
+            self.switch_timer = randint(0, 1)
         elif self.cruise_gap_prev == CS.cruiseGapSet and CS.cruiseGapSet != 1.0 and self.opkr_autoresume:
           self.cruise_gap_set_init = False
           self.cruise_gap_prev = 0
@@ -600,7 +600,7 @@ class CarController():
               self.resume_cnt += 1
               if self.resume_cnt >= randint(6, 8):
                 self.resume_cnt = 0
-                self.switch_timer = randint(30, 36)
+                self.switch_timer = randint(0, 1)
           elif btn_signal != None:
             if self.switch_timer > 0:
               self.switch_timer -= 1
@@ -610,7 +610,7 @@ class CarController():
               self.resume_cnt += 1
               if self.resume_cnt >= randint(6, 8):
                 self.resume_cnt = 0
-                self.switch_timer = randint(30, 36)
+                self.switch_timer = randint(0, 1)
           elif 0 < CS.lead_distance <= 149 and not self.cruise_gap_set_init and self.try_early_stop and self.try_early_stop_retrieve and \
            CS.cruiseGapSet != self.try_early_stop_org_gap and \
            (CS.clu_Vanz <= 20 or (CS.lead_objspd >= 0 and self.sm['longitudinalPlan'].e2eX[12] > 50 and self.sm['longitudinalPlan'].stopLine[12] > 100 and CS.clu_Vanz > 20)):
@@ -622,7 +622,7 @@ class CarController():
               self.resume_cnt += 1
               if self.resume_cnt >= randint(6, 8):
                 self.resume_cnt = 0
-                self.switch_timer = randint(30, 36)
+                self.switch_timer = randint(0, 1)
             if CS.cruiseGapSet == self.try_early_stop_org_gap:
               self.try_early_stop_retrieve = False
           else:
@@ -641,8 +641,8 @@ class CarController():
               self.resume_cnt += 1
               if self.resume_cnt >= randint(6, 8):
                 self.resume_cnt = 0
-                self.switch_timer = randint(30, 36)
-              self.switch_timer2 = randint(30, 36)
+                self.switch_timer = randint(0, 1)
+              self.switch_timer2 = randint(0, 1)
           elif self.switch_timer > 0 and not self.try_early_stop_retrieve:
             self.switch_timer -= 1
           elif CS.cruiseGapSet != self.gap_by_spd_gap[0] and ((CS.clu_Vanz < self.gap_by_spd_spd[0]+self.gap_by_spd_on_buffer1) or self.gap_by_spd_gap1) and not self.try_early_stop_retrieve:
@@ -657,7 +657,7 @@ class CarController():
             self.resume_cnt += 1
             if self.resume_cnt >= randint(6, 8):
               self.resume_cnt = 0
-              self.switch_timer = randint(30, 36)
+              self.switch_timer = randint(0, 1)
           elif CS.cruiseGapSet != self.gap_by_spd_gap[1] and ((self.gap_by_spd_spd[0] <= CS.clu_Vanz < self.gap_by_spd_spd[1]+self.gap_by_spd_on_buffer2) or self.gap_by_spd_gap2) and not self.try_early_stop_retrieve:
             self.gap_by_spd_gap1 = False
             self.gap_by_spd_gap2 = True
@@ -670,7 +670,7 @@ class CarController():
             self.resume_cnt += 1
             if self.resume_cnt >= randint(6, 8):
               self.resume_cnt = 0
-              self.switch_timer = randint(30, 36)
+              self.switch_timer = randint(0, 1)
           elif CS.cruiseGapSet != self.gap_by_spd_gap[2] and ((self.gap_by_spd_spd[1] <= CS.clu_Vanz < self.gap_by_spd_spd[2]+self.gap_by_spd_on_buffer3) or self.gap_by_spd_gap3) and not self.try_early_stop_retrieve:
             self.gap_by_spd_gap1 = False
             self.gap_by_spd_gap2 = False
@@ -682,7 +682,7 @@ class CarController():
             self.resume_cnt += 1
             if self.resume_cnt >= randint(6, 8):
               self.resume_cnt = 0
-              self.switch_timer = randint(30, 36)
+              self.switch_timer = randint(0, 1)
           elif CS.cruiseGapSet != self.gap_by_spd_gap[3] and ((self.gap_by_spd_spd[2] <= CS.clu_Vanz) or self.gap_by_spd_gap4) and not self.try_early_stop_retrieve:
             self.gap_by_spd_gap1 = False
             self.gap_by_spd_gap2 = False
@@ -694,7 +694,7 @@ class CarController():
             self.resume_cnt += 1
             if self.resume_cnt >= randint(6, 8):
               self.resume_cnt = 0
-              self.switch_timer = randint(30, 36)
+              self.switch_timer = randint(0, 1)
           elif btn_signal != None:
             if self.switch_timer2 > 0 and self.try_early_stop_retrieve:
               self.switch_timer2 -= 1
@@ -706,7 +706,7 @@ class CarController():
               self.resume_cnt += 1
               if self.resume_cnt >= randint(6, 8):
                 self.resume_cnt = 0
-                self.switch_timer = randint(30, 36)
+                self.switch_timer = randint(0, 1)
             self.gap_by_spd_gap1 = False
             self.gap_by_spd_gap2 = False
             self.gap_by_spd_gap3 = False
@@ -722,8 +722,8 @@ class CarController():
               self.resume_cnt += 1
               if self.resume_cnt >= randint(6, 8):
                 self.resume_cnt = 0
-                self.switch_timer = randint(30, 36)
-              self.switch_timer2 = randint(30, 36)
+                self.switch_timer = randint(0, 1)
+              self.switch_timer2 = randint(0, 1)
             if CS.cruiseGapSet == self.try_early_stop_org_gap:
               self.try_early_stop_retrieve = False
             self.gap_by_spd_gap1 = False
@@ -858,7 +858,7 @@ class CarController():
         self.resume_cnt += 1
         if self.resume_cnt >= randint(6, 8):
           self.resume_cnt = 0
-          self.auto_res_timer = randint(30, 36)
+          self.auto_res_timer = randint(0, 1)
       elif self.opkr_cruise_auto_res_option == 1:
         can_sends.append(create_clu11(self.packer, frame, CS.clu11, Buttons.SET_DECEL)) if not self.longcontrol \
          else can_sends.append(create_clu11(self.packer, frame, CS.clu11, Buttons.SET_DECEL, clu11_speed, CS.CP.sccBus)) # auto res but set_decel to set current speed
@@ -868,7 +868,7 @@ class CarController():
         self.resume_cnt += 1
         if self.resume_cnt >= randint(6, 8):
           self.resume_cnt = 0
-          self.auto_res_timer = randint(30, 36)
+          self.auto_res_timer = randint(0, 1)
       elif self.opkr_cruise_auto_res_option == 2:
         if not self.longcontrol:
           can_sends.append(create_clu11(self.packer, frame, CS.clu11, Buttons.RES_ACCEL)) if 1 < CS.lead_distance < 149 \
@@ -882,7 +882,7 @@ class CarController():
         self.resume_cnt += 1
         if self.resume_cnt >= randint(6, 8):
           self.resume_cnt = 0
-          self.auto_res_timer = randint(30, 36)
+          self.auto_res_timer = randint(0, 1)
 
     if CS.out.brakeLights and CS.out.vEgo == 0 and not CS.out.cruiseState.standstill:
       self.standstill_status_timer += 1
