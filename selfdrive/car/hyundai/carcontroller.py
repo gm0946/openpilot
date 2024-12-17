@@ -365,7 +365,7 @@ class CarController():
 
       cut_steer_temp = False
       if self.cut_s
-        cut_steer_temp = Truerando
+        cut_steer_temp = True
         self.cut_steer_frames += 1
 
     if (( CS.out.leftBlinker and not CS.out.rightBlinker) or ( CS.out.rightBlinker and not CS.out.leftBlinker)) and CS.out.vEgo < LANE_CHANGE_SPEED_MIN and self.opkr_turnsteeringdisable:
