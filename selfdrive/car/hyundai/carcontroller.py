@@ -364,7 +364,7 @@ class CarController():
         self.cut_steer = False
 
       cut_steer_temp = False
-      if self.cut_s
+      if self.cut_s:
         cut_steer_temp = True
         self.cut_steer_frames += 1
 
